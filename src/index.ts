@@ -3,13 +3,13 @@ import * as Storage from '@google-cloud/storage';
 import { Bucket, ConfigurationObject } from '@google-cloud/storage';
 import * as uuid from 'uuid/v1';
 import { Request } from 'express';
-const storage: (options?:ConfigurationObject)=>Storage = require('@google-cloud/storage');
+const storage: (options?:ConfigurationObject)=> Storage = require('@google-cloud/storage');
 
 export default class MulterGoogleCloudStorage implements multer.StorageEngine {
 
 	private gcobj: Storage;
 	private gcsBucket: Bucket;
-	private options: ConfigurationObject & { acl?: string, bucket?: string, contentType?: ContentTypeFunction };
+	private options: ConfigurationObject & { acl?: string, bucket?: string, contentType?: ContentTypeFunction, disableAcl?: boolean };
 
 	getFilename(req, file, cb) {
     	cb(null,`${uuid()}_${file.originalname}`);
