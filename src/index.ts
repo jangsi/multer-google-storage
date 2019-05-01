@@ -68,7 +68,7 @@ export default class MulterGoogleCloudStorage implements multer.StorageEngine {
 				var gcFile = this.gcsBucket.file(filename);
 
 				const streamOpts: Storage.WriteStreamOptions = {
-					predefinedAcl: this.options.acl || this.options.disableAcl ? undefined : 'private'
+					predefinedAcl: this.options.disableAcl ? undefined : this.options.acl || 'private'
 				};
 
 				const contentType = this.getContentType(req, file);
