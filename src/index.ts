@@ -69,7 +69,6 @@ export default class MulterGoogleCloudStorage implements multer.StorageEngine {
 
 				const streamOpts: Storage.WriteStreamOptions = {};
 
-				console.log('options', this.options);
 				if (this.options.disableAcl) {
 					streamOpts.predefinedAcl = this.options.acl || 'private'
 				}
